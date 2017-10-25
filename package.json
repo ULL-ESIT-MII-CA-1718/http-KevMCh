@@ -1,0 +1,24 @@
+{
+  "name": "http-kevmch",
+  "version": "1.0.0",
+  "description": "Summary of Chapter 17 (HTTP) of the Eloquent Javascript book.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh.git"
+  },
+  "keywords": [
+    "http",
+    "eloquentjs",
+    "chapter17"
+  ],
+  "author": "Kevin Martín Chinea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh#readme"
+}
