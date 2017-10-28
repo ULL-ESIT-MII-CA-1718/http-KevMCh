@@ -75,3 +75,47 @@ Last-Modified: Wed, 09 Apr 2014 10:48:09 GMT
 The client or the server decides which headers to include in a request or a
 response. After the headers it can have the body with the data being sent. GET
 and DELETE requests don’t send along any data, but PUT and POST requests do.
+
+=== Browsers and HTTP
+
+The browser will make a request when we enter a URL in its address bar or the
+HTML page references other files. Browsers will make requests simultaneously
+using GET requests.
+
+[source, html]
+.This is a example of a _form_.
+----
+include::src/browser-and-http/index.html[tag=code]
+----
+
+This code describes a form with two fields a small one asking for a name and a larger one to write a message in. When you send the information the field will encoded into a query string.
+
+*  When the <form> element’s method attribute is GET the query string is tacked
+onto the action URL, and the browser makes a GET request to that URL.
+
+[source, Shell]
+----
+GET /example/message.html?name=Jean&message=Yes%3F HTTP/1.1
+----
+
+The query string is started with a question mark, after that follow pairs of
+names and values separated with a ampersand character (&). Some characters in
+query strings must be escaped.
+
+[source, Javascript]
+.link:/http-KevMCh/src/browser-and-http/uri-component.html[URI Component]
+----
+include::src/browser-and-http/uri-component.html[tag=code]
+----
+
+* If we use the POST method the form put the query string in body of the
+request.
+
+[source, Shell]
+----
+POST /example/message.html HTTP/1.1
+Content-length: 24
+Content-type: application/x-www-form-urlencoded
+
+name=Jean&message=Yes%3F
+----

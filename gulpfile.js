@@ -8,3 +8,5 @@ gulp.task("pre-install", shell.task([
 gulp.task("the-protocol", shell.task("nodemon src/the-protocol/server.js"));
 gulp.task("get", shell.task("nodemon src/the-protocol/get.js"));
 gulp.task("post", shell.task("nodemon src/the-protocol/post.js"));
+
+gulp.task("browser-and-http", shell.task("nodemon src/browser-and-http/server.js"));

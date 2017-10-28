@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h3>Hello & goodbye</h3>
+  <h4></h4>
+  <p>
+    <strong>encodeURIComponent:</strong>
+    <span id="encodeURIComponent"></span>
+  </p>
+  <p>
+    <strong>decodeURIComponent:</strong>
+    <span id="decodeURIComponent">
+    </span>
+  </p>
+  <script>
+  // tag::code[]
+  console.log(encodeURIComponent("Hello & goodbye"));
+  // → Hello%20%26%20goodbye
+  console.log(decodeURIComponent("Hello%20%26%20goodbye"));
+  // → Hello & goodbye
+  // end::code[]
+
+  document.getElementById('encodeURIComponent').innerHTML =
+    encodeURIComponent("Hello & goodbye");
+
+  document.getElementById('decodeURIComponent').innerHTML =
+    decodeURIComponent("Hello%20%26%20goodbye");
+  </script>
+</body>
+</html>
