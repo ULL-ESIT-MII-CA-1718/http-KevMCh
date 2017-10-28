@@ -1,0 +1,77 @@
+= Summary
+
+== _Chapter 17_ , _HTTP_
+
+The Hypertext Transfer Protocol, is the mechanism through which data is
+requested and provided on the World Wide Web.
+
+=== The protocol
+
+when you search a url in the browser, for example
+_eloquentjavascript.net/17_http.html_, the browser first looks up the address of
+ the server associated with _eloquentjavascript.net_ and tries to open a TCP
+ connection to it on port 80, the default port for HTTP traffic. If the server
+ exists and accepts the connection, the browser sends something like this:
+
+[source, Shell]
+----
+GET /17_http.html HTTP/1.1
+Host: eloquentjavascript.net
+User-Agent: Your browser's name
+----
+
+The server responds:
+[source, Shell]
+----
+HTTP/1.1 200 OK
+Content-Length: 65585
+Content-Type: text/html
+Last-Modified: Wed, 09 Apr 2014 10:48:09 GMT
+
+<!doctype html>
+... the rest of the document
+----
+
+The browser then takes the part of the response after the blank line and
+displays it as an HTML document.
+
+The client can send different request to the server.
+
+* _GET_ means that we want to get the specified resource.
+* _DELETE_ to delete a resource.
+* _PUT_ to replace it.
+* _POST_ to send information to it.
+
+
+After the resource path, the first line of the request mentions HTTP/1.1 to
+indicate the version of the HTTP protocol it is using. The server’s response
+will start with a version as well, followed by the status of the response, first
+ as a three-digit status code and then as a human-readable string.
+
+[source, Shell]
+----
+HTTP/1.1 200 OK
+----
+
+*Codes:*
+
+* If the status codes start with a _2_ indicate that the request succeeded.
+
+* Codes starting with _4_ mean there was something wrong with the request.
+
+* Codes that start with _5_ mean an error happened on the server and the request
+ is not to blame.
+
+The request or response can be followed by any number of headers with the
+ format _name: value_.
+
+[source, Shell]
+----
+Content-Length: 65585
+Content-Type: text/html
+Last-Modified: Wed, 09 Apr 2014 10:48:09 GMT
+----
+
+The client or the server decides which headers to include in a request or a
+response. After the headers it can have the body with the data being sent. GET
+and DELETE requests don’t send along any data, but PUT and POST requests do.

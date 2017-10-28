@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh/issues"
   },
-  "homepage": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh#readme"
+  "homepage": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh#readme",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.6.3"
+  }
 }
