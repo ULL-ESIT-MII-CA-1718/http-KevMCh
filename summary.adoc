@@ -131,3 +131,21 @@ time, Mozilla (later Firefox), did not want to be left behind. Mozilla copied
 the interface, including the bogus name. The next generation of browsers
 followed this example, and today XMLHttpRequest is a de facto standard
 interface.
+
+=== Sending a request
+
+Simple request. We create a request object with the XMLHttpRequest constructor
+and call its open and send methods.
+
+The open method configures the request. In this case, we choose to make a GET
+request. After opening the request, we can send it with the send method. The
+argument to send is the request body. For GET requests, we can pass null. If the
+ third argument to open was false, send will return only after the response to
+ our request was received. We can read the request object’s responseText
+ property to get the response body. The other information included in the
+ response can also be extracted from this object. 
+
+[source, Javascript]
+----
+include::src/sending-a-request/index.html[tag=code]
+----

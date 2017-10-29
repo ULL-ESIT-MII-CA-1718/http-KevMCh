@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2>Using the XMLHttpRequest Object</h2>
+
+  <div id="demo">
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
+  </div>
+
+  <script>
+  let loadXMLDoc = function() {
+    // tag::code[]
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "/xmlhttp_info.txt", false);
+    xhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+    xhttp.setRequestHeader("Header1", "First");
+    xhttp.setRequestHeader("header2", "Second");
+
+    xhttp.send(null);
+
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      console.log(xhttp.statusText);
+
+      console.log(xhttp.getResponseHeader("MyServerSetHeader"));
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+    // end::code[]
+  }
+  </script>
+
+</body>
+</html>
