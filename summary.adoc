@@ -143,9 +143,24 @@ argument to send is the request body. For GET requests, we can pass null. If the
  third argument to open was false, send will return only after the response to
  our request was received. We can read the request object’s responseText
  property to get the response body. The other information included in the
- response can also be extracted from this object. 
+ response can also be extracted from this object.
 
 [source, Javascript]
 ----
 include::src/sending-a-request/index.html[tag=code]
+----
+
+=== Asynchronous Requests
+
+If we pass true as the third argument to open, the request is asynchronous. This
+ means that when we call send, the only thing that happens right away is that
+ the request is scheduled to be sent. Our program can continue, and the browser
+ will take care of the sending and receiving of data in the background. But as
+ long as the request is running, we won’t be able to access the response. We
+ need a mechanism that will notify us when the data is available. For this, we
+ must listen for the "load" event on the request object.
+
+[source, Javascript]
+----
+include::src/asynchronous-requests/index.html[tag=code]
 ----
