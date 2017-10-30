@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Using the XMLHttpRequest Object</h2>
+  <div id="demo">
+    <button type="button" onclick="loadXMLDoc1()">Change Content (Denied)</button>
+    <button type="button" onclick="loadXMLDoc2()">Change Content (Allow)</button>
+  </div>
+
+  <script>
+  function loadXMLDoc1() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.addEventListener("load", function() {
+      document.getElementById("demo").innerHTML = this.responseText;
+    });
+    xhttp.open("GET", "http://localhost:3030/xmlhttp_info.txt");
+    xhttp.send();
+  }
+
+  function loadXMLDoc2() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.addEventListener("load", function() {
+      document.getElementById("demo").innerHTML = this.responseText;
+    });
+    xhttp.open("GET", "http://localhost:3020/xmlhttp_info.txt");
+    xhttp.send();
+  }
+  </script>
+
+</body>
+</html>
