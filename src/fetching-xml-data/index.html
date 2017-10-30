@@ -8,7 +8,7 @@
   </div>
   <button type="button" onclick="main()">Change Content</button>
 
-  <script type="text/javascript" src="/src/fetching-xml-data/escape-xml.js"></script>
+  <script type="text/javascript" src="escape-xml.js"></script>
   <script>
     function loadXMLFile() {
       // tag::code1[]
@@ -24,7 +24,7 @@
           "<br/>";
       });
 
-      xhttp.open("GET", "/src/fetching-xml-data/fruits.xml");
+      xhttp.open("GET", "fruits.xml");
       xhttp.send();
       // end::code1[]
     }
@@ -39,7 +39,7 @@
         document.getElementById("demo").innerHTML += this.responseText+"<br/>";
       });
 
-      xhttp.open("GET", "/src/fetching-xml-data/fruits.json");
+      xhttp.open("GET", "fruits.json");
       xhttp.send();
       // end::code2[]
     }

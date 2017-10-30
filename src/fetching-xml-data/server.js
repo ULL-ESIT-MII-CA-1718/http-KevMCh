@@ -5,16 +5,11 @@ var util = require('util');
 // https://nodejs.org/api/path.html
 var path = require('path');
 
-// View engine setup
-app.set('views', path.join(__dirname, 'views'));
-// Set the view engine to ejs
-app.set('view engine', 'ejs'); // http://expressjs.com/api.html#app.set
-
 var expressLayouts = require('express-ejs-layouts');
 app.set('layout', 'layout'); // defaults to 'layout'  '
 
 // Serve static files
-app.use(express.static('.')); // http://expressjs.com/api.html#app.use#
+app.use(express.static(__dirname)); // http://expressjs.com/api.html#app.use#
 app.use(expressLayouts);
 
 app.set('port', (process.env.PORT || 8080));
