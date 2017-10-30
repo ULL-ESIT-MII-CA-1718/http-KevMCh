@@ -164,3 +164,34 @@ If we pass true as the third argument to open, the request is asynchronous. This
 ----
 include::src/asynchronous-requests/index.html[tag=code]
 ----
+
+=== Fetching XML Data
+
+When the resource retrieved by an XMLHttpRequest object is an XML document, the
+object’s responseXML property will hold a parsed representation of this
+document. The object that responseXML holds corresponds to the document object.
+Its documentElement property refers to the outer tag of the XML document.
+
+[source,xml]
+----
+<fruits>
+  <fruit name="banana" color="yellow"/>
+  <fruit name="lemon" color="yellow"/>
+  <fruit name="cherry" color="red"/>
+</fruits>
+----
+
+[source, Javascript]
+.File result with xml file.
+----
+include::src/fetching-xml-data/index.html[tag=code1]
+----
+
+XML documents can be used to exchange structured information with the server,
+but is better using JSON data which is easier to read and write.
+
+[source, Javascript]
+.File result with json file.
+----
+include::src/fetching-xml-data/index.html[tag=code2]
+----

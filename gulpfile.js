@@ -14,3 +14,5 @@ gulp.task("browser-and-http", shell.task("nodemon src/browser-and-http/server.js
 gulp.task("sending-a-request", shell.task("nodemon src/sending-a-request/server.js"));
 
 gulp.task("asynchronous-requests", shell.task("nodemon src/asynchronous-requests/server.js"));
+
+gulp.task("fetching-xml-data", shell.task("nodemon src/fetching-xml-data/server.js"));

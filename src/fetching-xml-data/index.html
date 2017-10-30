@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Using the XMLHttpRequest Object</h2>
+  <div>
+    <pre id="demo">
+    </pre>
+  </div>
+  <button type="button" onclick="main()">Change Content</button>
+
+  <script type="text/javascript" src="/src/fetching-xml-data/escape-xml.js"></script>
+  <script>
+    function loadXMLFile() {
+      // tag::code1[]
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.addEventListener("load", function() {
+        console.log(this.responseXML);
+        let s = new XMLSerializer();
+        let newXmlStr = s.serializeToString(this.responseXML);
+        document.getElementById("demo").innerHTML +=
+          "<br/>" +
+            escapeXml(newXmlStr) +
+          "<br/>";
+      });
+
+      xhttp.open("GET", "/src/fetching-xml-data/fruits.xml");
+      xhttp.send();
+      // end::code1[]
+    }
+
+    function loadJSONFile() {
+      // tag::code2[]
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.addEventListener("load", function() {
+        console.log(this.responseText);
+        console.log(JSON.parse(this.responseText));
+        document.getElementById("demo").innerHTML += this.responseText+"<br/>";
+      });
+
+      xhttp.open("GET", "/src/fetching-xml-data/fruits.json");
+      xhttp.send();
+      // end::code2[]
+    }
+
+    let main = function() {
+      loadXMLFile();
+      loadJSONFile();
+    }
+  </script>
+
+</body>
+</html>
