@@ -2,7 +2,8 @@ var gulp = require("gulp");
 var shell = require("gulp-shell");
 
 gulp.task("pre-install", shell.task([
-      "npm install -g nodemon"
+  "npm install -g static-server",
+  "npm install -g nodemon"
 ]));
 
 gulp.task("the-protocol", shell.task("nodemon src/the-protocol/server.js"));

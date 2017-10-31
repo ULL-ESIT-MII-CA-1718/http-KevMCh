@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript" src="background-readfile.js"></script>
+  <script type="text/javascript">
+    // tag::code[]
+    try {
+      backgroundReadFile("README.md", function(text) {
+        if (text != "expected")
+          throw new Error("That was unexpected");
+      });
+    } catch (e) { // Never executed
+      console.log("Hello from the catch block");
+    }
+
+    try {
+      // The file does'nt exists.
+      backgroundReadFile("example/data.txt", function(text) {
+        if (text != "expected")
+          throw new Error("That was unexpected");
+      });
+    } catch (e) { // Never executed
+      console.log("Hello from the catch block");
+    }
+    // end::code[]
+  </script>
+</body>
+</html>

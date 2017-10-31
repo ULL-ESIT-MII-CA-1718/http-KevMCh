@@ -174,11 +174,7 @@ Its documentElement property refers to the outer tag of the XML document.
 
 [source,xml]
 ----
-<fruits>
-  <fruit name="banana" color="yellow"/>
-  <fruit name="lemon" color="yellow"/>
-  <fruit name="cherry" color="red"/>
-</fruits>
+include::src/fetching-xml-data/fruits.xml[]
 ----
 
 [source, Javascript]
@@ -198,6 +194,64 @@ include::src/fetching-xml-data/index.html[tag=code2]
 
 === HTTP sandboxing
 
-Making HTTP requests in web page scripts once again raises concerns about security. The person who controls the script might not have the same interests as the person on whose computer it is running. It is possible for websites to protect themselves against attacks, but that requires effort, and many websites fail to do it. For this reason, browsers protect us by disallowing scripts to make HTTP requests to other domains. This can be an annoying problem when building systems that want to access several domains for legitimate reasons. Fortunately, servers can include a header like this in their response to explicitly indicate to browsers that it is okay for the request to come from other domains:
+Making HTTP requests in web page scripts once again raises concerns about
+security. The person who controls the script might not have the same interests
+as the person on whose computer it is running. It is possible for websites to
+protect themselves against attacks, but that requires effort, and many websites
+fail to do it. For this reason, browsers protect us by disallowing scripts to
+make HTTP requests to other domains. This can be an annoying problem when
+building systems that want to access several domains for legitimate reasons.
+Fortunately, servers can include a header like this in their response to
+explicitly indicate to browsers that it is okay for the request to come from
+other domains:
 
 _Access-Control-Allow-Origin: *_
+
+=== Abstracting requests
+
+Simple implementation of the function _backgroundReadFile_, it took a filename
+and a function and called that function with the contents of the file when it
+had finished fetching it.
+
+[source, Javascript]
+----
+include::src/abstracting-requests/background-readfile.js[]
+----
+
+This simple abstraction makes it easier to use XMLHttpRequest for simple GET
+requests. The function argument’s name, callback, is a term that is often used
+to describe functions like this. A callback function is given to other code to
+provide that code with a way to “call us back” later. Error handling in
+asynchronous code is even trickier than error handling in synchronous code.
+Because we often need to defer part of our work, putting it in a callback
+function, the scope of a try block becomes meaningless. In the following code,
+the exception will not be caught because the call to backgroundReadFile returns
+immediately. Control then leaves the try block, and the function it was given 
+won’t be called until later.
+
+[source, Javascript]
+----
+include::src/abstracting-requests/index-background-readfile.html[tag=code]
+----
+
+To handle failing requests, we have to allow an additional function to be passed
+ to our wrapper and call that when a request goes wrong. Alternatively, we can
+ use the convention that if the request fails, an additional argument describing
+  the problem is passed to the regular callback function.
+
+[source, Javascript]
+----
+include::src/abstracting-requests/get-url.js[]
+----
+
+Code using getURL check whether an error was given and, if it finds one, handle
+it.
+
+[source, Javascript]
+----
+include::src/abstracting-requests/index-get-url.html[tag=code]
+----
+
+This does not help when it comes to exceptions. When chaining several
+asynchronous actions together, an exception at any point of the chain will still
+ land at the top level and abort your chain of actions.
