@@ -329,3 +329,14 @@ Some system requires communication between a the client-side and the server-side
  representing the resource. With this is easier to use some of the features that
   HTTP provides and it can also help the coherence of your interface since
   resources are easier to reason about than a jumble of functions.
+
+=== Security and HTTPS
+
+Data traveling over the Internet tends to follow a long, dangerous road. At any
+point along its route it may be inspected or even modified. The secure HTTP
+protocol, whose URLs start with https://, wraps HTTP traffic in a way that makes
+ it harder to read and tamper with. First, the client verifies that the server
+ is who it claims to be by requiring that server to prove that it has a
+ cryptographic certificate issued by a certificate authority that the browser
+ recognizes. Next, all data going over the connection is encrypted in a way that
+  should prevent eavesdropping and tampering.
