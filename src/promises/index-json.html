@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript" src="get-url.js"></script>
+  <script type="text/javascript">
+    // tag::code1[]
+    function getJSON(url) {
+      return get(url).then(JSON.parse);
+    }
+    // end::code1[]
+
+    // tag::code2[]
+    let info = getJSON("https://api.github.com/");
+    console.log("1 GitHub API info = -- %o\n--", info);
+    info.then(
+        (x) => console.log("1 GitHub API info = -- %o+\n--",x);
+    );
+
+    let nofile = getJSON("nofile.json");
+    nofile.then(
+        (x) => console.log("2 nofile = -- %o+\n--",x)
+    ).catch(
+        (e) => console.log("2 Catched!!! %o",e)
+    );
+    // end::code2[]
+  </script>
+</body>
+</html>

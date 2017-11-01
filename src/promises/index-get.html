@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript" src="get-url.js"></script>
+  <script type="text/javascript">
+    // tag::code[]
+    get("README.md").then(function(text) {
+      console.log("README.md: " + text);
+    }, function(error) {
+      console.log("Failed to fetch README.md: " + error);
+    });
+
+    get("data/nonsense.txt").then(function(text) {
+      console.log("data/nonsense.txt: " + text);
+    }, function(error) {
+      console.log("Failed to fetch data/nonsense.txt: " + error);
+    });
+    // end::code[]
+  </script>
+</body>
+</html>

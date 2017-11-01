@@ -226,7 +226,7 @@ asynchronous code is even trickier than error handling in synchronous code.
 Because we often need to defer part of our work, putting it in a callback
 function, the scope of a try block becomes meaningless. In the following code,
 the exception will not be caught because the call to backgroundReadFile returns
-immediately. Control then leaves the try block, and the function it was given 
+immediately. Control then leaves the try block, and the function it was given
 won’t be called until later.
 
 [source, Javascript]
@@ -255,3 +255,60 @@ include::src/abstracting-requests/index-get-url.html[tag=code]
 This does not help when it comes to exceptions. When chaining several
 asynchronous actions together, an exception at any point of the chain will still
  land at the top level and abort your chain of actions.
+
+=== Promises
+
+Promises wrap an asynchronous action in an object, which can be passed around
+and told to do certain things when the action finishes or fails. To create a
+promise object, we call the Promise constructor, giving it a function that
+initializes the asynchronous action. The constructor calls that function,
+passing it two arguments, which are themselves functions. The first should be
+called when the action finishes successfully, and the second should be called
+when it fails.
+
+[source, Javascript]
+.Wrapper for GET requests, this time returning a promise.
+----
+include::src/promises/get-url.js[]
+----
+
+That promise acts as a handle to the request’s outcome. It has a then method
+that you can call with two functions: one to handle success and one to handle
+failure.
+
+[source, Javascript]
+.Wrapper for GET requests, this time returning a promise.
+----
+include::src/promises/index-get.html[tag=code]
+----
+
+Calling then produces a new promise, whose result (the value passed to success
+handlers) depends on the return value of the first function we passed to then.
+This function may return another promise to indicate that more asynchronous
+work is being done. In this case, the promise returned by then itself will wait
+for the promise returned by the handler function, succeeding or failing with the
+ same value when it is resolved. When the handler function returns a nonpromise
+ value, the promise returned by then immediately succeeds with that value as its
+  result.
+
+[source, Javascript]
+----
+include::src/promises/index-json.html[tag=code1]
+----
+
+That last call to then did not specify a failure handler. This is allowed. The
+error will be passed to the promise returned by then, which is exactly what we
+want—getJSON does not know what to do when something goes wrong, but hopefully
+its caller does.
+
+[source, Javascript]
+----
+include::src/promises/index-json.html[tag=code2]
+----
+
+Example with concatenated promises and loading text.
+
+[source, Javascript]
+----
+include::src/promises/index-loading.html[tag=code]
+----
