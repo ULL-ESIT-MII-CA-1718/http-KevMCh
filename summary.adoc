@@ -312,3 +312,20 @@ Example with concatenated promises and loading text.
 ----
 include::src/promises/index-loading.html[tag=code]
 ----
+
+=== Appreciating HTTP
+
+Some system requires communication between a the client-side and the server-side
+, there are different ways to model this communication. A commonly used model is
+ that of remote procedure calls, communication follows the patterns of normal
+ function calls, except that the function is actually running on another machine
+ . Calling it involves making a request to the server that includes the function
+ 's name and arguments, the response to that request contains the returned value
+ . HTTP is the communication tool and you will most likely write an abstraction
+ layer that hides it entirely. Another approach is to build your communication
+ around the concept of resources and HTTP methods. You use a PUT request to
+ define a document format or use an existing format that represents a object or
+ making a GET request to the resource’s URL which returns the document
+ representing the resource. With this is easier to use some of the features that
+  HTTP provides and it can also help the coherence of your interface since
+  resources are easier to reason about than a jumble of functions.

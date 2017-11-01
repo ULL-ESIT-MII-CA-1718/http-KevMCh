@@ -17,6 +17,7 @@
       return document.body.appendChild(elt);
     }
 
+    // tag::code[]
     var loading = showMessage("Loading...");
     getJSON("bert").then(function(bert) {
       return getJSON(bert.spouse);
@@ -30,6 +31,7 @@
     }).then(function() {
       document.body.removeChild(loading);
     });
+    //end::code[]
   </script>
 </body>
 </html>
