@@ -88,7 +88,9 @@ using GET requests.
 include::src/browser-and-http/index.html[tag=code]
 ----
 
-This code describes a form with two fields a small one asking for a name and a larger one to write a message in. When you send the information the field will encoded into a query string.
+This code describes a form with two fields a small one asking for a name and a
+larger one to write a message in. When you send the information the field will
+encoded into a query string.
 
 *  When the <form> element’s method attribute is GET the query string is tacked
 onto the action URL, and the browser makes a GET request to that URL.
@@ -340,3 +342,37 @@ protocol, whose URLs start with https://, wraps HTTP traffic in a way that makes
  cryptographic certificate issued by a certificate authority that the browser
  recognizes. Next, all data going over the connection is encrypted in a way that
   should prevent eavesdropping and tampering.
+
+=== Exercises
+
+==== Content negotiation
+
+The Accept header for a request can be used to tell the server what type of
+document the client would like to get. Many servers ignore this header, but when
+ to server knows of various ways to encode a resource, it can look at this
+ header and send the one that the client prefers. The URL
+ eloquentjavascript.net/author is configured to respond with either plaintext,
+ HTML, or JSON, depending on what the client asks for. These formats are
+ identified by the standardized media types text / plain, text / html, and
+ application / json. Program to send requests to fetch all three formats of this
+  resource.
+
+[source, Javascript]
+----
+include::src/exercises/content-negotiation/index.html[tag=code]
+----
+
+=== Waiting for multiple promises
+
+The Promise constructor has an all method that, given an array of promises,
+returns a promise that waits for all of the promises in the array to finish. It
+then succeeds, yielding an array of result values. If any of the promises in the
+ array fail, the promise returned by all fails too (with the failure value from
+ the failing promise).
+
+Implementation of function all.
+
+[source, Javascript]
+----
+include::src/exercises/waiting-for-multiple-promises/index.html[tag=code]
+----
