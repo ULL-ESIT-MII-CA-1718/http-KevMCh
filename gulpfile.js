@@ -9,6 +9,8 @@ gulp.task("pre-install", shell.task([
 
 gulp.task("doc", shell.task("asciidoctor summary.adoc -o index.html"));
 
+gulp.task("server", shell.task("static-server -p 8080"));
+
 gulp.task("the-protocol", shell.task("nodemon src/the-protocol/server.js"));
 gulp.task("get", shell.task("nodemon src/the-protocol/get.js"));
 gulp.task("post", shell.task("nodemon src/the-protocol/post.js"));
