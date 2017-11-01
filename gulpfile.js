@@ -3,8 +3,11 @@ var shell = require("gulp-shell");
 
 gulp.task("pre-install", shell.task([
   "npm install -g static-server",
-  "npm install -g nodemon"
+  "npm install -g nodemon",
+  "sudo gem install asciidoctor"
 ]));
+
+gulp.task("doc", shell.task("asciidoctor summary.adoc -o index.html"));
 
 gulp.task("the-protocol", shell.task("nodemon src/the-protocol/server.js"));
 gulp.task("get", shell.task("nodemon src/the-protocol/get.js"));
