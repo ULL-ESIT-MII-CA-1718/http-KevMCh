@@ -12,7 +12,7 @@ app.use(express.static(__dirname));
 
 app.get("/xmlhttp_info.txt", (request, response) => {
   response.append('Access-Control-Allow-Origin', '*');
-  response.send("Response from server 3001: <b>Hello client!</b>" );
+  response.send("Response from server 3020: <b>Hello client!</b>" );
 });
 
 app.listen(app.get('port'), () => {

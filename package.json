@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ULL-ESIT-MII-CA-1718/http-KevMCh#readme",
   "devDependencies": {
+    "cors": "^2.8.4",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-ejs-layouts": "^2.3.1",
