@@ -11,7 +11,7 @@ app.use(expressLayouts);
 app.use(express.static(__dirname));
 
 var corsOptions = {
-  origin: 'http://localhost:8080/'
+  origin: 'http://localhost:8080'
 }
 
 app.get("/xmlhttp_info.txt", cors(corsOptions), (request, response) => {
